@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springriver.example.mybatis.mapper.UsersMapper">
+
+
+<select id="selectUserById" parameterType="int" resultType="com.springriver.example.mybatis.bean.Users">
+	select name as name from users where id = #{id}
+</select>
+
+<insert id="insertUser" parameterType="com.springriver.example.mybatis.bean.Users" useGeneratedKeys="true" keyProperty="id">
+	insert into users(name,email) values (#{name} , #{email})
+</insert>
+
+<update id="updateUser" parameterType="com.springriver.example.mybatis.bean.Users" >
+	UPDATE users SET email=#{email} WHERE (`id`=#{id})
+</update>
+
+<update id="deleteUser" parameterType="com.springriver.example.mybatis.bean.Users" >
+	DELETE FROM users WHERE (`id`=#{id})
+</update>
+
+</mapper>
